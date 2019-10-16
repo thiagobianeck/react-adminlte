@@ -1,7 +1,47 @@
-import React, {Component} from 'react';
+import React, { useState, useEffect } from 'react';
+import StatTile from "./components/StatTile";
 
-class Dashboard extends Component {
-  render() {
+function Dashboard() {
+  const [tileOptions, setTileOptions ] = useState([{
+            theme: 'bg-aqua',
+            icon: 'ion-bag',
+            subject: 'New Orders',
+            stats: '150',
+            link: '#'
+          }, {
+            theme: 'bg-green',
+            icon: 'ion-stats-bars',
+            subject: 'Bounce Rate',
+            stats: '53%',
+            link: '#'
+          }, {
+            theme: 'bg-yellow',
+            icon: 'ion-person-add',
+            subject: 'User Registrations',
+            stats: '44',
+            link: '#'
+          }, {
+            theme: 'bg-red',
+            icon: 'ion-pie-graph',
+            subject: 'Unique Visitors',
+            stats: '65',
+            link: '#'
+          }]);
+
+  let statTileWidgets = tileOptions.map(function (options, iterator) {
+    console.log('dashboadr',{options, iterator});
+    return (
+        <StatTile
+            key={"rowThree"+iterator}
+            width = {3}
+            icon = {options.icon}
+            link = {options.link}
+            stats = {options.stats}
+            subject = {options.subject}
+            theme = {options.theme} />
+    )
+  });
+   
     return (
       <div className="content-wrapper">
         {/* Dashboard Header (Page header) */}
@@ -23,72 +63,7 @@ class Dashboard extends Component {
         <section className="content">
           {/* Small boxes (Stat box) */}
           <div className="row">
-            <div className="col-lg-3 col-xs-6">
-              {/* small box */}
-              <div className="small-box bg-aqua">
-                <div className="inner">
-                  <h3>150</h3>
-                  <p>New Orders</p>
-                </div>
-                <div className="icon">
-                  <i className="ion ion-bag" />
-                </div>
-                <a href="!#" className="small-box-footer">
-                  More info <i className="fa fa-arrow-circle-right" />
-                </a>
-              </div>
-            </div>
-            {/* ./col */}
-            <div className="col-lg-3 col-xs-6">
-              {/* small box */}
-              <div className="small-box bg-green">
-                <div className="inner">
-                  <h3>
-                    53<sup style={{ fontSize: 20 }}>%</sup>
-                  </h3>
-                  <p>Bounce Rate</p>
-                </div>
-                <div className="icon">
-                  <i className="ion ion-stats-bars" />
-                </div>
-                <a href="!#" className="small-box-footer">
-                  More info <i className="fa fa-arrow-circle-right" />
-                </a>
-              </div>
-            </div>
-            {/* ./col */}
-            <div className="col-lg-3 col-xs-6">
-              {/* small box */}
-              <div className="small-box bg-yellow">
-                <div className="inner">
-                  <h3>44</h3>
-                  <p>User Registrations</p>
-                </div>
-                <div className="icon">
-                  <i className="ion ion-person-add" />
-                </div>
-                <a href="!#" className="small-box-footer">
-                  More info <i className="fa fa-arrow-circle-right" />
-                </a>
-              </div>
-            </div>
-            {/* ./col */}
-            <div className="col-lg-3 col-xs-6">
-              {/* small box */}
-              <div className="small-box bg-red">
-                <div className="inner">
-                  <h3>65</h3>
-                  <p>Unique Visitors</p>
-                </div>
-                <div className="icon">
-                  <i className="ion ion-pie-graph" />
-                </div>
-                <a href="!#" className="small-box-footer">
-                  More info <i className="fa fa-arrow-circle-right" />
-                </a>
-              </div>
-            </div>
-            {/* ./col */}
+            {statTileWidgets}
           </div>
           {/* /.row */}
           {/* Main row */}
@@ -695,7 +670,6 @@ class Dashboard extends Component {
       </div>
     
     );
-  }
 }
 
 export default Dashboard;
