@@ -2,34 +2,38 @@ import React, { useState, useEffect } from 'react';
 import StatTile from "./components/StatTile";
 
 function Dashboard() {
-  const [tileOptions, setTileOptions ] = useState([{
+  const [tileOptions, setTileOptions ] = useState([
+          {
             theme: 'bg-aqua',
             icon: 'ion-bag',
             subject: 'New Orders',
             stats: '150',
             link: '#'
-          }, {
+          },
+          {
             theme: 'bg-green',
             icon: 'ion-stats-bars',
             subject: 'Bounce Rate',
             stats: '53%',
             link: '#'
-          }, {
+          },
+          {
             theme: 'bg-yellow',
             icon: 'ion-person-add',
             subject: 'User Registrations',
             stats: '44',
             link: '#'
-          }, {
+          },
+          {
             theme: 'bg-red',
             icon: 'ion-pie-graph',
             subject: 'Unique Visitors',
             stats: '65',
             link: '#'
-          }]);
+          }
+          ]);
 
   let statTileWidgets = tileOptions.map(function (options, iterator) {
-    console.log('dashboadr',{options, iterator});
     return (
         <StatTile
             key={"rowThree"+iterator}

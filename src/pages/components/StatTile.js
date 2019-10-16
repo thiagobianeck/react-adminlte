@@ -27,11 +27,8 @@ import React from 'react';
      stats = <h3> {stats} </h3>;
    }
 
-   console.log('props', { theme, icon, subject, stats, link, width });
-
-
   return (
-      <div className="col-lg-3 col-xs-6">
+      <div className={`col-lg-${width} col-xs-6`}>
         <div className={`small-box ${theme}`}>
           <div className="inner">
             {stats}
